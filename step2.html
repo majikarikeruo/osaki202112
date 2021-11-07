@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/p5.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="pt-4">
+        <div class="container">
+          <div class="form-outer">
+            <h1 class="h1 font-weight-bold">コスゲリアン迷路</h1>
+
+            <hr class="mt-4 mb-4" />
+
+            <div class="mt-4">
+              <h2 class="h3 font-weight-bold mb-3">
+                Step2・ボタンを押したらキャラクターが動くようにしよう！
+              </h2>
+              <p>
+                次は、ボタンを押したらキャラクターが動くようにしてみましょう！
+              </p>
+
+              <div class="mb-4">
+                <img src="images/image03.jpg" alt="" />
+              </div>
+              <p class="mb-4">
+                キャラクターを移動させるには、まず<span class="text-danger"
+                  >「キャラクタが今ゲームエリアの中でどの場所にいるのか」</span
+                >を数字で表してプログラムに教えてあげる必要があります!
+              </p>
+              <div style="margin: 0 -12px" class="mb-3">
+                <img src="images/image04.png" alt="" />
+                <p class="small text-muted" style="margin: 0 12px">
+                  ※小さめのスマホで見ている方、ごめんなさい…涙
+                </p>
+              </div>
+              <div class="mb-3">
+                <p>
+                  プログラムには、色々な情報をコンピューターに記憶させる仕組みがあります！<br /><br />
+                  <span class="font-weight-bold" style="font-weight: bold"
+                    >プログラムは必要な情報をかき集めてコンピューターに記憶させ、必要なものが集まったらそれらを計算したり加工したりすることでやりたいことを実現するという仕組みになっています！</span
+                  >
+                  <br /><br />
+                  この仕組みを使って、キャラクターのいる場所を記憶させましょう！
+                </p>
+              </div>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mt-4">
+              <div>
+                <p class="mb-4">
+                  コンピューターに何かを記憶させるためには、ある目印をつけてあげます。その目印をつけると、
+                </p>
+                <div class="mb-4 bg-light p-2">
+                  <h3 class="h6 font-weight-bold">
+                    ■情報を記憶させる目印のつけかた
+                  </h3>
+                  <ul class="small px-3">
+                    <li>
+                      <span class="text-danger d-inline-block mx-2">const</span
+                      >imgX = 0;<br />
+                      <p class="small text-muted">
+                        コンピューターの頭脳の中に「imgX」という場所を作り、その中に0という数字を記憶させる
+                      </p>
+                    </li>
+                    <li>
+                      <span class="text-danger d-inline-block mx-2">let</span
+                      >imgY = 0;<br />
+                      <p class="small text-muted">
+                        コンピューターの頭脳の中に「imgY」という場所を作り、その中に0という数字を記憶させる
+                      </p>
+                    </li>
+                  </ul>
+                  <p class="small">
+                    このように、constあるいはletというものを目印とします。
+                  </p>
+                </div>
+                <div class="mb-4">
+                  <p>
+                    constとletの違いは、「記憶させたデータを書き換え可能かどうか」という点です！
+                  </p>
+                </div>
+                <div class="bg-light p-3 mb-4">
+                  <h3 class="h6 font-weight-bold">■constとletの違い</h3>
+                  <ul class="small px-3">
+                    <li class="mb-2">
+                      <span class="text-danger d-inline-block">const</span
+                      >・・・記憶させたデータを書き換えできない。
+                    </li>
+                    <li>
+                      <span class="text-danger d-inline-block">let</span
+                      >・・・記憶させたデータを書き換えできる。
+                    </li>
+                  </ul>
+                </div>
+                <div>
+                  <p>
+                    プログラムの中身を見たときに、constとかletというのを見つけたら「<span
+                      class="text-danger"
+                      >ここでは情報をコンピューターに記憶させているんだな</span
+                    >」と思うようにしましょう！
+                  </p>
+                  <p>
+                    <span class="text-danger">ここで問題！</span
+                    ><br />キャラクターの位置情報をコンピューターの頭脳に記憶させるとき、constとletのどちらを使えばいいでしょうか？お選びください！
+                  </p>
+                  <div class="bg-light p-3 mb-4">
+                    <ul style="list-style: none" class="px-0">
+                      <li class="mb-2">
+                        <input
+                          type="radio"
+                          name="variable"
+                          id="btn-const"
+                          class="mx-2"
+                        />const
+                      </li>
+                      <li>
+                        <input
+                          type="radio"
+                          name="variable"
+                          id="btn-let"
+                          class="mx-2"
+                        />let
+                      </li>
+                    </ul>
+                  </div>
+                  <script>
+                    window.addEventListener("load", function () {
+                      document
+                        .querySelector("#btn-const")
+                        .addEventListener("click", () => {
+                          alert("残念！不正解！");
+                        });
+                      document
+                        .querySelector("#btn-let")
+                        .addEventListener("click", () => {
+                          alert("正解！");
+                        });
+                    });
+                  </script>
+                  <div>
+                    <p>正解できましたか？？</p>
+                    <p>実際にコードで表すと、以下のようになります！</p>
+                  </div>
+                  <div class="bg-light p-3 mb-4">
+                    <ul style="list-style: none" class="px-0">
+                      <li class="mb-2">
+                        let imgX = 0;
+                        <span class="text-muted"
+                          >//キャラクターの横位置を記憶させる。0にすると最初の横位置が1番左になる。</span
+                        >
+                      </li>
+                      <li class="mb-2">
+                        let imgY = 0;
+                        <span class="text-muted"
+                          >//キャラクターの縦位置を記憶させる。0にすると最初の縦位置が1番上になる。</span
+                        >
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mt-4">
+              <h2 class="h6 font-weight-bold">
+                ■ボタンを押してキャラクターを動かす
+              </h2>
+              <p>それではボタンを押してキャラクターが動くようにしましょう！</p>
+              <p>
+                キャラクターが動くようにするには、<span class="text-danger"
+                  >先ほど紹介したプログラムに対して足し算引き算をしてあげれば</span
+                >OKとなります！
+              </p>
+              <p>具体的には以下のようになっています！</p>
+              <div style="margin: 0 -12px" class="mb-3">
+                <img src="images/image05.png" alt="" />
+                <p class="small text-muted" style="margin: 0 12px">
+                  ※小さめのスマホで見ている方、ごめんなさい…涙
+                </p>
+              </div>
+              <div>
+                <p>
+                  では、以上のことを踏まえて、最後の問題として以下に取り組んでみてください！
+                </p>
+              </div>
+              <div class="bg-light p-3 mb-4">
+                <h3 class="h6 font-weight-bold">
+                  ■各ボタンの名前と動かしたい方向について
+                </h3>
+                <ul class="small px-3">
+                  <li class="mb-2">
+                    <span class="text-danger d-inline-block">←ボタン</span
+                    >・・・名前は「leftButton」。押したらキャラが左に４０動く。
+                  </li>
+                  <li class="mb-2">
+                    <span class="text-danger d-inline-block">↑ボタン</span
+                    >・・・名前は「topButton」。押したらキャラが上に４０動く。
+                  </li>
+                  <li class="mb-2">
+                    <span class="text-danger d-inline-block">→ボタン</span
+                    >・・・名前は「rightButton」。押したらキャラが右に４０動く。
+                  </li>
+                  <li class="">
+                    <span class="text-danger d-inline-block">↓ボタン</span
+                    >・・・名前は「bottomButton」。押したらキャラが下に４０動く。
+                  </li>
+                </ul>
+              </div>
+              <p>
+                上記を参考に、以下を完成させてプログラムにお願いごとをしてみましょう！
+              </p>
+
+              <div class="bg-light p-3 mb-4">
+                <h3 class="h6 font-weight-bold">■プログラムへのお願いごと</h3>
+                <div class="form-group">
+                  <div class="form-group mb-5" id="option1">
+                    leftButtonボタンを押すと、<br />
+                    <select
+                      id="pos1"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="imgX">imgX</option>
+                      <option value="imgY">imgY</option>
+                    </select>
+                    が40pxだけ
+                    <select
+                      id="gainloss1"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="増える">増える</option>
+                      <option value="減る">減る</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-5" id="option2">
+                    topButtonボタンを押すと、<br />
+                    <select
+                      id="pos2"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="imgX">imgX</option>
+                      <option value="imgY">imgY</option>
+                    </select>
+                    が40pxだけ
+                    <select
+                      id="gainloss2"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="増える">増える</option>
+                      <option value="減る">減る</option>
+                    </select>
+                  </div>
+                  <div class="form-group mb-5" id="option3">
+                    rightButtonボタンを押すと、<br />
+                    <select
+                      id="pos3"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="imgX">imgX</option>
+                      <option value="imgY">imgY</option>
+                    </select>
+                    が40pxだけ
+                    <select
+                      id="gainloss3"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="増える">増える</option>
+                      <option value="減る">減る</option>
+                    </select>
+                  </div>
+                  <div class="form-group" id="option4">
+                    bottomButtonボタンを押すと、<br />
+                    <select
+                      id="pos4"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="imgX">imgX</option>
+                      <option value="imgY">imgY</option>
+                    </select>
+                    が40pxだけ
+                    <select
+                      id="gainloss4"
+                      class="form-select mt-2"
+                      aria-label="Default select example"
+                      style="width: 100px; display: inline"
+                    >
+                      <option value="増える">増える</option>
+                      <option value="減る">減る</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <button id="btn-code" class="btn btn-primary">
+                お願いごとをコードにしてみる
+              </button>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mb-4">
+              <div id="code-area" class="small mb-2"></div>
+              <button id="btn-play" class="btn btn-primary">
+                プログラムにお願いごとを伝える
+              </button>
+            </div>
+            <hr class="mt-4 mb-4" />
+
+            <div class="mb-4">
+              <iframe
+                src="game2.html"
+                frameborder="0"
+                width="100%"
+                height="400px"
+                id="game2Frame"
+              ></iframe>
+              <p>
+                お願いごとを伝えたら、思い通りに動くかどうか、ボタンを押して確認してみよう！
+              </p>
+              <p>もし思い通りにいかなかったら、選択肢を変更してみよう！</p>
+              <p>
+                今回は以上です！長かったと思いますが、ありがとうございました！
+              </p>
+            </div>
+          </div>
+          <!-- <div id="canvasArea"></div> -->
+        </div>
+      </div>
+    </main>
+    <script>
+      document.querySelector("#btn-code").addEventListener("click", () => {
+        const pos1 = document.querySelector("#pos1").value;
+        const gainloss1 = document.querySelector("#gainloss1").value;
+        const pos2 = document.querySelector("#pos2").value;
+        const gainloss2 = document.querySelector("#gainloss2").value;
+        const pos3 = document.querySelector("#pos3").value;
+        const gainloss3 = document.querySelector("#gainloss3").value;
+        const pos4 = document.querySelector("#pos4").value;
+        const gainloss4 = document.querySelector("#gainloss4").value;
+
+        const code = `
+      let img;
+      let imgX = 0;
+      let imgY = 0;
+
+      function setup() {
+        const canvas = createCanvas(320, 350);
+        const area = document.querySelector("#canvasArea");
+        canvas.parent(area);
+        const leftButton = setButton("←", {
+          x: 0,
+          y: 320,
+        });
+        const topButton = setButton("↑", {
+          x: 80,
+          y: 320,
+        });
+        const rightButton = setButton("→", {
+          x: 160,
+          y: 320,
+        });
+        const bottomButton = setButton("↓", {
+          x: 240,
+          y: 320,
+        });
+
+        leftButton.parent(area);
+        topButton.parent(area);
+        rightButton.parent(area);
+        bottomButton.parent(area);
+
+        leftButton.mousePressed(function () {
+          if(${pos1} === "imgX" && ${gainloss1} ==="増える"){
+            imgX += 40;
+          }else if(${pos1} === "imgX" && ${gainloss1} ==="減る"){
+            imgX -= 40;
+          }else if(${pos1} === "imgY" && ${gainloss1} ==="増える"){
+            imgY += 40;
+          }else if(${pos1} === "imgY" && ${gainloss1} ==="減る"){
+            imgY -= 40;
+          }
+        });
+        topButton.mousePressed(function () {
+          if(${pos2} === "imgX" && ${gainloss2} ==="増える"){
+            imgX += 40;
+          }else if(${pos2} === "imgX" && ${gainloss2} ==="減る"){
+            imgX -= 40;
+          }else if(${pos2} === "imgY" && ${gainloss2} ==="増える"){
+            imgY += 40;
+          }else if(${pos2} === "imgY" && ${gainloss2} ==="減る"){
+            imgY -= 40;
+          }
+        });
+        rightButton.mousePressed(function () {
+          if(${pos3} === "imgX" && ${gainloss3} ==="増える"){
+            imgX += 40;
+          }else if(${pos3} === "imgX" && ${gainloss3} ==="減る"){
+            imgX -= 40;
+          }else if(${pos3} === "imgY" && ${gainloss3} ==="増える"){
+            imgY += 40;
+          }else if(${pos3} === "imgY" && ${gainloss3} ==="減る"){
+            imgY -= 40;
+          }
+        });
+        bottomButton.mousePressed(function () {
+          if(${pos4} === "imgX" && ${gainloss4} ==="増える"){
+            imgX += 40;
+          }else if(${pos4} === "imgX" && ${gainloss4} ==="減る"){
+            imgX -= 40;
+          }else if(${pos4} === "imgY" && ${gainloss4} ==="増える"){
+            imgY += 40;
+          }else if(${pos4} === "imgY" && ${gainloss4} ==="減る"){
+            imgY -= 40;
+          }
+        });
+      }
+      function preload() {
+        img = loadImage("stamp18.png");
+      }
+      function draw() {
+        background(220);
+        image(img, imgX, imgY, 40, 40);
+      }
+
+      function setButton(label, pos) {
+        const button = createButton(label);
+        button.size(80, 30);
+        button.position(pos.x, pos.y);
+        return button;
+      }`;
+
+        document.querySelector("#code-area").innerHTML = code;
+      });
+
+      document.querySelector("#btn-play").addEventListener("click", () => {
+        document.querySelector("#game2Frame").src = "game2.html";
+      });
+    </script>
+  </body>
+</html>

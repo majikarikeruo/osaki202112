@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/p5.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="pt-4">
+        <div class="container">
+          <div class="form-outer">
+            <h1 class="h1 font-weight-bold">コスゲリアン迷路</h1>
+            <p>ゲームエリア上のキャラクターを動かしてみよう！</p>
+            <p>Stepごとに少しずつ作っていって完成させよう！</p>
+
+            <hr class="mt-4 mb-4" />
+
+            <div class="mt-4">
+              <h2 class="h3 font-weight-bold mb-3">
+                Step1・ゲームエリア上にボタンを置こう！
+              </h2>
+              <p>
+                ゲームエリアは<span class="text-danger">横320px、縦350px</span
+                >という大きさになっています。
+              </p>
+
+              <div class="mb-4">
+                <img src="images/image01.jpg" alt="" />
+              </div>
+              <p class="mb-4">
+                ゲームエリアにボタンを置くには、以下のようなコードを使います。<br /><br />4つボタンを置きたいのであれば、4回このコードを使うことになりますね！
+              </p>
+              <div style="margin: 0 -12px" class="mb-3">
+                <img src="images/image02.png" alt="" />
+                <p class="small text-muted" style="margin: 0 12px">
+                  ※小さめのスマホで見ている方、ごめんなさい…涙
+                </p>
+              </div>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mt-4">
+              <div>
+                <p class="mb-4">
+                  <span class="text-primary">それではここで問題です！</span
+                  >先ほどの完成イメージを見た上で答えてみてね！
+                </p>
+                <div class="mb-4 bg-light p-2">
+                  <h3 class="h6 font-weight-bold">■やりたいこと</h3>
+                  <p class="small">
+                    <span class="text-danger">「横320・縦350」</span
+                    >のゲームエリアの1番下に、<span class="text-danger"
+                      >「幅80・高さが30」</span
+                    >のボタンを4つ並べたい!
+                  </p>
+                </div>
+                <div class="mb-4">↓↓↓↓</div>
+                <div class="bg-light p-3 mb-4">
+                  <h3 class="h6 font-weight-bold">
+                    ■やりたいことを実現するために
+                  </h3>
+                  <p class="small">
+                    プログラムに<span class="text-danger"
+                      >「ゲームエリア上で、横●●・縦●●の場所に、幅●●・高さ●●ボタンをおいてねー！」</span
+                    >と教えてあげることで、ゲームエリアにボタンが表示されます。
+                  </p>
+                </div>
+                <p>
+                  以下の空欄を埋めてゲームエリアにボタンを表示するお願いごとを完成させてみましょう！
+                </p>
+              </div>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mt-4">
+              <div class="bg-light p-3 mb-4">
+                <h3 class="h6 font-weight-bold">■プログラムへのお願いごと</h3>
+                <div class="form-group">
+                  <div class="form-group mb-3">
+                    「ゲームエリア上で、
+                    <p class="mt-2">
+                      横:<input
+                        type="number"
+                        id="x"
+                        class="form-control mx-2"
+                        style="width: 80px; display: inline"
+                      />
+                    </p>
+                    <p>
+                      縦:<input
+                        type="number"
+                        id="y"
+                        class="form-control mx-2"
+                        style="width: 80px; display: inline"
+                      /><br /><span class="d-inline-block mt-3"
+                        >の場所に、</span
+                      >
+                    </p>
+                    <p>
+                      幅:<input
+                        type="number"
+                        id="button-w"
+                        class="form-control mx-2"
+                        style="width: 80px; display: inline"
+                      />
+                    </p>
+                    <p>
+                      高さ:<input
+                        type="number"
+                        id="button-h"
+                        class="form-control mx-2"
+                        style="width: 80px; display: inline"
+                      />
+                    </p>
+                    のボタンをおいてねー！」
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mb-4">
+              <button id="btn-code" class="btn btn-primary">
+                お願いごとをコードにしてみる
+              </button>
+            </div>
+            <hr class="mt-4 mb-4" />
+            <div class="mb-4">
+              <div id="code-area" class="small mb-2"></div>
+              <button id="btn-play" class="btn btn-primary">
+                プログラムにお願いごとを伝える
+              </button>
+            </div>
+            <hr class="mt-4 mb-4" />
+
+            <div class="mb-4">
+              <iframe
+                src="game1.html"
+                frameborder="0"
+                width="100%"
+                height="400px"
+                id="game1Frame"
+              ></iframe>
+              <p>
+                もし思い通りにいかなかったら、数字入力からやり直してみよう！
+              </p>
+              <p>
+                うまくいったら、同じようなことをあと3回やれば、4つボタンを表示することができるわけですね！
+              </p>
+              <button class="btn btn-success mb-2" id="answer">
+                正解が知りたい方はここを押す
+              </button>
+              <a href="step2.html" class="btn btn-primary">Step2にすすむ</a>
+              <p class="small text-muted mt-2">
+                ※Step2では、ボタンが4つ設置された状態から続きをやっていきます！
+              </p>
+            </div>
+          </div>
+          <!-- <div id="canvasArea"></div> -->
+        </div>
+      </div>
+    </main>
+    <script>
+      document.querySelector("#btn-code").addEventListener("click", () => {
+        const x = document.querySelector("#x").value;
+        const y = document.querySelector("#y").value;
+        const buttonW = document.querySelector("#button-w").value;
+        const buttonH = document.querySelector("#button-h").value;
+        const code = `
+let img;<br>
+
+function setup() {<br>
+        const canvas = createCanvas(320, 350);<br>
+        const area = document.querySelector("#canvasArea");<br>
+        canvas.parent(area);<br>
+        const leftButton = setButton("←", {<br>
+          x: ${x},<br>
+          y: ${y},<br>
+        });<br>
+
+        leftButton.parent(area);<br>
+      }<br>
+<br>
+function preload() {<br>
+    img = loadImage('stamp18.png');<br>
+}<br>
+<br>
+function draw() {<br>
+        background(220);<br>
+        image(img, 0, 0, 40, 40);<br>
+      }<br>
+
+      function setButton(label, pos) {<br><br>
+        const button = createButton(label);
+        button.size(${buttonW}, ${buttonH});<br>
+        button.position(pos.x, pos.y);<br>
+        return button;<br>
+      }<br>`;
+
+        document.querySelector("#code-area").innerHTML = code;
+      });
+
+      document.querySelector("#btn-play").addEventListener("click", () => {
+        document.querySelector("#game1Frame").src = "game1.html";
+      });
+
+      document.querySelector("#answer").addEventListener("click", () => {
+        alert("正解は、横0・縦320・幅80・高さ30、です！");
+      });
+    </script>
+  </body>
+</html>

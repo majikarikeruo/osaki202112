@@ -1,0 +1,40 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  line-height: 1.5 !important;
+  font-weight: bold !important;
+}
+canvas {
+  display: block;
+}
+#canvasArea {
+  position: relative;
+}
+
+.wrapper {
+  box-sizing: border-box;
+  padding: 0 10px;
+}
+
+textarea {
+  font-family: "Source Code Pro", monospace;
+}
+#code-area {
+  height: 400px;
+  padding: 8px;
+  overflow-y: scroll;
+  border: solid 1px #ddd;
+}

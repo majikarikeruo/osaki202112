@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+    <script src="js/p5.min.js"></script>
+  </head>
+  <body>
+    <main>
+      <div class="pt-4">
+        <div class="container">
+          <div class="form-outer">
+            <h1>コスゲリアン迷路</h1>
+            <p>キャラクターを動かしてみよう！</p>
+          </div>
+          <div id="canvasArea"></div>
+        </div>
+      </div>
+    </main>
+    <script>
+      let img;
+      let imgPos = {
+        x: 0,
+        y: 0,
+      };
+
+      function setup() {
+        const canvas = createCanvas(400, 330);
+        const area = document.querySelector("#canvasArea");
+        canvas.parent(area);
+        const leftButton = setButton("←", {
+          x: 0,
+          y: 300,
+        });
+        const topButton = setButton("↑", {
+          x: 100,
+          y: 300,
+        });
+        const rightButton = setButton("→", {
+          x: 200,
+          y: 300,
+        });
+        const bottomButton = setButton("↓", {
+          x: 300,
+          y: 300,
+        });
+
+        leftButton.parent(area);
+        topButton.parent(area);
+        rightButton.parent(area);
+        bottomButton.parent(area);
+
+        leftButton.mousePressed(function () {
+          console.log("test", img);
+          imgPos["x"] -= 40;
+        });
+        topButton.mousePressed(function () {
+          console.log("test2", img);
+          imgPos["y"] -= 40;
+        });
+        rightButton.mousePressed(function () {
+          console.log("test3", img);
+          imgPos["x"] += 40;
+        });
+        bottomButton.mousePressed(function () {
+          console.log("test4", img);
+          imgPos["y"] += 40;
+        });
+      }
+      function preload() {
+        img = loadImage("stamp18.png");
+      }
+      function draw() {
+        background(220);
+        image(img, imgPos["x"], imgPos["y"], 40, 40);
+      }
+
+      function setButton(label, pos) {
+        const button = createButton(label);
+        button.size(80, 30);
+        button.position(pos.x, pos.y);
+        return button;
+      }
+    </script>
+  </body>
+</html>
