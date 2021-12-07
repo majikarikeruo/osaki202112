@@ -2,8 +2,11 @@ const parent = window.parent.document;
 const table = parent.querySelectorAll("#table input");
 
 const array = [];
-table.forEach((item) => {
-  array.push(parseInt(item.value));
+table.forEach((item, index) => {
+  if (index % 8 === 0) {
+    array[index % 8].push([]);
+  }
+  array[index % 8].push(parseInt(item.value));
 });
 console.log(table, array);
 
