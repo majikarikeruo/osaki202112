@@ -3,9 +3,9 @@ const table = parent.querySelectorAll("#table input");
 
 const array = [];
 table.forEach((item) => {
-  ary.push(item.value);
+  array.push(item.value);
 });
-console.log(table, ary);
+console.log(table, array);
 
 let img, bgImage;
 let imgX = 0;
