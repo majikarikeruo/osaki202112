@@ -1,5 +1,5 @@
 const parent = window.parent.document;
-const table = parent.querySelector("#table input");
+const table = parent.querySelectorAll("#table input");
 console.log(table);
 
 const ary = [];
