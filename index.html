@@ -218,82 +218,75 @@
     <script>
       document.querySelector("#btn-code").addEventListener("click", () => {
         const code = `
-      let img,bgImage;
-      let imgX = 0;
-      let imgY = 0;
 
-      let array = [
-        [0,0,1,0,0,0,0,1],
-        [1,0,1,0,0,0,0,0],
-        [1,0,1,1,1,0,1,0],
-        [1,0,0,0,0,0,1,0],
-        [1,0,1,1,1,0,1,0],
-        [0,0,0,1,1,0,1,0],
-        [0,1,0,0,0,0,1,0],
-        [0,1,0,1,1,0,1,0]  
-      ]
-
-
-      function setup() {
-        const canvas = createCanvas(320, 350);
-        const area = document.querySelector("#canvasArea");
-        canvas.parent(area);
-        const leftButton = setButton("←", {
-          x: 0,
-          y: 320,
-        });
-        const topButton = setButton("↑", {
-          x: 80,
-          y: 320,
-        });
-        const rightButton = setButton("→", {
-          x: 160,
-          y: 320,
-        });
-        const bottomButton = setButton("↓", {
-          x: 240,
-          y: 320,
-        });
-
-        leftButton.parent(area);
-        topButton.parent(area);
-        rightButton.parent(area);
-        bottomButton.parent(area);
-
-      }
+        const array = [[], [], [], [], [], [], [], []];<br>
+table.forEach((item, index) => {<br>
+  console.log(array, index % 8);<br>
+  array[index % 8].push(parseInt(item.value));<br>
+});<br>
+console.log(table, array);<br>
 <br>
-
-function preload() {<br>
-    img = loadImage('stamp18.png');<br>
-    bgImage = loadImage('kosuge-horror.jpg');<br>
-}<br>
+let img, bgImage;<br>
+let imgX = 0;<br>
+let imgY = 0;<br>
 <br>
-function draw() {<br>
-        background(220);<br>
-        bgRefresh();
-        image(img, 0, 0, 40, 40);<br>
-      }<br>
+function setup() {<br>
+  const canvas = createCanvas(320, 350);<br>
+  const area = document.querySelector("#canvasArea");<br>
+  canvas.parent(area);<br>
+  const leftButton = setButton("←", {<br>
+    x: 0,<br>
+    y: 320,<br>
+  });<br>
+  const topButton = setButton("↑", {<br>
+    x: 80,<br>
+    y: 320,<br>
+  });<br>
+  const rightButton = setButton("→", {<br>
+    x: 160,<br>
+    y: 320,<br>
+  });<br>
+  const bottomButton = setButton("↓", {<br>
+    x: 240,<br>
+    y: 320,<br>
+  });<br>
 
-      // 背景をループで表示させている箇所
-      function bgRefresh() {
-        background(240);
-        for(let i=0; i<8; i++){
-          for(let j=0; j<8; j++){
-          if(array[j][i]===1){
-            image(bgImage, i*40, j*40, 40, 40);
-          }
-
-          }
-        }
-      }<br>
-      
-function setButton(label, pos) {
-  const button = createButton(label);
-  button.size(80, 30);
-  button.position(pos.x, pos.y);
-  return button;
+  leftButton.parent(area);<br>
+  topButton.parent(area);<br>
+  rightButton.parent(area);<br>
+  bottomButton.parent(area);<br>
 }
 
+function preload() {<br>
+  img = loadImage("stamp18.png");<br>
+  bgImage = loadImage("wall.png");<br>
+}<br>
+
+function draw() {<br>
+  background(220);<br>
+  bgRefresh();<br>
+  image(img, 0, 0, 40, 40);<br>
+}<br>
+
+// 背景をループで表示させている箇所
+function bgRefresh() {<br>
+  background(240);<br>
+  for (let i = 0; i < 8; i++) {<br>
+    for (let j = 0; j < 8; j++) {<br>
+      if (array[i][j] === 1) {<br>
+        image(bgImage, i * 40, j * 40, 40, 40);<br>
+      }<br>
+    }<br>
+  }<br>
+}<br>
+<br>
+function setButton(label, pos) {<br>
+  const button = createButton(label);<br>
+  button.size(80, 30);<br>
+  button.position(pos.x, pos.y);<br>
+  return button;<br>
+}<br>
+<br>
       
       `;
 
