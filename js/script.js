@@ -1,7 +1,7 @@
 const parent = window.parent.document;
 const table = parent.querySelectorAll("#table input");
 
-const ary = [];
+const array = [];
 table.forEach((item) => {
   ary.push(item.value);
 });
@@ -10,17 +10,6 @@ console.log(table, ary);
 let img, bgImage;
 let imgX = 0;
 let imgY = 0;
-
-let array = [
-  [0, 0, 1, 0, 0, 0, 0, 1],
-  [1, 0, 1, 0, 0, 0, 0, 0],
-  [1, 0, 1, 1, 1, 0, 1, 0],
-  [1, 0, 0, 0, 0, 0, 1, 0],
-  [1, 0, 1, 1, 1, 0, 1, 0],
-  [0, 0, 0, 1, 1, 0, 1, 0],
-  [0, 1, 0, 0, 0, 0, 1, 0],
-  [0, 1, 0, 1, 1, 0, 1, 0],
-];
 
 function setup() {
   const canvas = createCanvas(320, 350);
