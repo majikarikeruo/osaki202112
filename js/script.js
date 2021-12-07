@@ -1,4 +1,4 @@
-let img,bgImage,;
+let img,bgImage;
 let imgX = 0;
 let imgY = 0;
 
