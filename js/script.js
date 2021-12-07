@@ -1,6 +1,10 @@
 const parent = window.parent.document;
-const pos1 = parent.querySelector("#table");
-console.log(pos1);
+const table = parent.querySelector("#table input");
+const ary = [];
+table.forEach((item) => {
+  ary.push(item.value);
+});
+console.log(ary);
 
 let img, bgImage;
 let imgX = 0;
