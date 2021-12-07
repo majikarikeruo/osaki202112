@@ -1,10 +1,11 @@
 const parent = window.parent.document;
 const table = parent.querySelector("#table input");
+console.log(table);
+
 const ary = [];
 table.forEach((item) => {
   ary.push(item.value);
 });
-console.log(ary);
 
 let img, bgImage;
 let imgX = 0;
