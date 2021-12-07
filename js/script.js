@@ -62,3 +62,10 @@ function bgRefresh() {
     }
   }
 }
+
+function setButton(label, pos) {
+  const button = createButton(label);
+  button.size(80, 30);
+  button.position(pos.x, pos.y);
+  return button;
+}
