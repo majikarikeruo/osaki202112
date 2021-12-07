@@ -42,7 +42,7 @@ function setup() {
 
 function preload() {
   img = loadImage("stamp18.png");
-  bgImage = loadImage("kosuge-horror.jpg");
+  bgImage = loadImage("wall.png");
 }
 
 function draw() {
