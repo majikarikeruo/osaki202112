@@ -1,3 +1,7 @@
+const parent = window.parent.document;
+const pos1 = parent.querySelector("#table");
+console.log(pos1);
+
 let img, bgImage;
 let imgX = 0;
 let imgY = 0;
