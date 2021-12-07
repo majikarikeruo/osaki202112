@@ -3,7 +3,7 @@ const table = parent.querySelectorAll("#table input");
 
 const array = [];
 table.forEach((item) => {
-  array.push(item.value);
+  array.push(parseInt(item.value));
 });
 console.log(table, array);
 
