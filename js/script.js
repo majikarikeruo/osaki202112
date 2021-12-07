@@ -55,7 +55,7 @@ function bgRefresh() {
   background(240);
   for (let i = 0; i < 8; i++) {
     for (let j = 0; j < 8; j++) {
-      if (array[j][i] === 1) {
+      if (array[i][j] === 1) {
         image(bgImage, i * 40, j * 40, 40, 40);
       }
     }
